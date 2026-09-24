@@ -1,0 +1,222 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>Momo Magic Cafe</title>
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-behavior:smooth;scroll-padding-top:calc(72px + env(safe-area-inset-top,0px))}
+*,*:before,*:after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 var(--body)}
+h1,h2,h3,h4{font-family:var(--head);margin:0;font-weight:600;line-height:1.15}
+img{max-width:100%;display:block}button,input,select{font:inherit}
+button{cursor:pointer;border:0}
+.w{max-width:1120px;margin:0 auto;padding:0 18px}
+section{padding:56px 0}
+h2{font-size:clamp(26px,5vw,38px);margin-bottom:8px}
+.sub{color:var(--muted);margin:0 0 24px;max-width:56ch}
+nav{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid #0001}
+nav .w{display:flex;align-items:center;gap:16px;height:64px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--brown);margin-right:auto}
+.logo b{font:700 15px/1 var(--head);letter-spacing:.14em;display:block}.logo small{font:12px/1 var(--head);letter-spacing:.5em;color:var(--accent)}
+.links{display:flex;gap:18px}.links a{color:var(--ink);text-decoration:none;font-size:15px}.links a:hover{color:var(--accent)}
+.btn{background:var(--brown);color:#fff;padding:12px 22px;border-radius:999px;font-weight:600;transition:transform .15s,background .2s}
+.btn:hover{background:var(--accent)}.btn:active{transform:scale(.96)}
+.btn.o{background:none;color:var(--brown);border:1.5px solid var(--brown)}.btn.o:hover{background:var(--brown);color:#fff}
+.btn.sm{padding:7px 14px;font-size:14px}.btn.g{background:var(--accent);color:#2b1a12}
+.cartb{position:relative;background:none;font-size:22px;padding:4px}
+.cartb i{position:absolute;top:-4px;right:-6px;background:var(--accent);color:#2b1a12;border-radius:99px;font:700 11px/1 var(--body);padding:3px 6px}
+.cartb.pop{animation:pop .35s}@keyframes pop{50%{transform:scale(1.3)}}
+.burger{display:none;background:none;font-size:26px;color:var(--brown)}
+@media(max-width:860px){.links{display:none;position:absolute;top:64px;left:0;right:0;background:var(--bg);flex-direction:column;padding:16px 18px;border-bottom:1px solid #0002}.links.open{display:flex}.burger{display:block}nav .ord{display:none}}
+.hero{padding:40px 0 56px}.hero .w{display:grid;grid-template-columns:1.1fr 1fr;gap:32px;align-items:center}
+.hero h1{font-size:clamp(38px,8vw,72px);letter-spacing:-.02em;color:var(--brown)}
+.hero h1 em{display:block;font-size:.42em;font-style:normal;letter-spacing:.3em;color:var(--accent);margin-bottom:12px}
+.badge{display:inline-block;background:var(--brown);color:#f7e3c4;border-radius:99px;padding:6px 14px;font-size:14px;margin-bottom:18px}
+.hero p{color:var(--muted);font-size:18px;max-width:46ch}.cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px}
+.himg{border-radius:48% 48% 24px 24px/40% 40% 24px 24px;overflow:hidden;aspect-ratio:4/5;box-shadow:0 24px 50px -20px #4a2c1a88}
+.himg img,.im img,.gal img{width:100%;height:100%;object-fit:cover}
+@media(max-width:860px){.hero .w{grid-template-columns:1fr}.himg{order:-1;aspect-ratio:5/4;border-radius:32px}}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:18px}
+.card{background:#fff;border-radius:18px;overflow:hidden;cursor:pointer;box-shadow:0 2px 12px #4a2c1a14;transition:transform .2s,box-shadow .2s;animation:fi .5s both}
+.card:hover{transform:translateY(-3px);box-shadow:0 12px 28px -8px #4a2c1a30}.card.off{opacity:.55}
+@keyframes fi{from{opacity:0;transform:translateY(8px)}}
+.im{aspect-ratio:4/3;overflow:hidden;position:relative}.im img,.gal img{transition:transform .5s}.card:hover img,.gal:hover img{transform:scale(1.06)}
+.tag{position:absolute;top:10px;left:10px;background:#fff;border-radius:99px;font-size:12px;padding:3px 10px}
+.cb{padding:14px}.cb h4{font-size:18px;display:flex;gap:8px;align-items:center}.cb p{color:var(--muted);font-size:14px;margin:6px 0 12px;min-height:40px}
+.row{display:flex;justify-content:space-between;align-items:center;gap:8px}.pr{font-weight:700;color:var(--brown)}
+.v{width:14px;height:14px;border:1.5px solid #2a8a3a;display:inline-grid;place-items:center;flex:none}.v:after{content:"";width:6px;height:6px;border-radius:50%;background:#2a8a3a}
+.cat h3{font-size:26px;margin:36px 0 14px}.soon{border:2px dashed #4a2c1a44;border-radius:18px;padding:22px;color:var(--muted);text-align:center}
+.magic{background:var(--brown);color:#f7e3c4;border-radius:28px;display:grid;grid-template-columns:1fr 1fr;overflow:hidden;margin-top:36px}
+.magic .t{padding:36px}.magic h3{font-size:clamp(28px,5vw,44px);color:#fff}.magic .k{color:var(--accent);letter-spacing:.2em;font-size:13px}.magic p{max-width:36ch}
+.magic img{height:100%;min-height:240px;object-fit:cover;width:100%}
+@media(max-width:700px){.magic{grid-template-columns:1fr}.magic .t{padding:24px}}
+.why{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px}.why div{background:#fff;border-radius:18px;padding:22px}.why b{font:600 19px var(--head);display:block;margin:6px 0}.why span{font-size:28px}
+.gals{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.gal{aspect-ratio:1;border-radius:16px;overflow:hidden}.gal:nth-child(1),.gal:nth-child(5){grid-row:span 2;aspect-ratio:auto}
+.ig{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}.ig div{aspect-ratio:1;border-radius:14px;overflow:hidden}.ig img{width:100%;height:100%;object-fit:cover}
+.loc{background:#fff;border-radius:22px;padding:26px;display:grid;grid-template-columns:1fr 1fr;gap:22px}.map{background:#efe3d0;border-radius:16px;min-height:200px;display:grid;place-items:center;color:var(--muted);text-align:center;padding:16px}
+@media(max-width:700px){.loc{grid-template-columns:1fr}}
+footer{background:#2b1a12;color:#d9c7b0;padding:32px 0;font-size:14px}footer a{color:var(--accent)}
+.ph{background:#fff3cd;color:#6b4e00;font-size:13px;text-align:center;padding:6px 12px}
+/* overlays */
+.ov{position:fixed;inset:0;background:#000a;z-index:50;display:flex;justify-content:center;align-items:flex-end;animation:fo .2s}
+@keyframes fo{from{opacity:0}}
+.md{background:var(--bg);width:100%;max-width:520px;max-height:92vh;overflow:auto;border-radius:24px 24px 0 0;padding:22px;padding-bottom:calc(22px + env(safe-area-inset-bottom,0px));animation:up .25s}
+@keyframes up{from{transform:translateY(30px)}}
+@media(min-width:700px){.ov{align-items:center}.md{border-radius:24px}}
+.md.wide{max-width:760px}.x{float:right;background:none;font-size:26px;line-height:1}
+.opt{display:flex;justify-content:space-between;align-items:center;padding:11px 14px;background:#fff;border-radius:12px;margin:6px 0;cursor:pointer;gap:10px}.opt input{accent-color:var(--brown);width:18px;height:18px}
+.qty{display:flex;align-items:center;gap:14px}.qty button{width:34px;height:34px;border-radius:50%;background:#fff;border:1.5px solid var(--brown);font-size:18px;color:var(--brown)}
+.ln{display:flex;justify-content:space-between;gap:10px;padding:10px 0;border-bottom:1px solid #0001}.ln small{display:block;color:var(--muted)}
+.tot{display:flex;justify-content:space-between;padding:3px 0}.tot.b{font-weight:700;font-size:19px;border-top:2px solid var(--ink);margin-top:6px;padding-top:8px}
+.seg{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0}.seg label{flex:1;min-width:90px;text-align:center;background:#fff;border:1.5px solid #0002;border-radius:12px;padding:10px;cursor:pointer}.seg label.on{border-color:var(--brown);background:var(--brown);color:#fff}.seg label.dis{opacity:.5}.seg input{display:none}
+.f{width:100%;padding:12px;border-radius:12px;border:1.5px solid #0002;background:#fff;margin:5px 0}
+.err{color:#b3261e;font-size:14px}
+.receipt{background:#fff;font-family:ui-monospace,Menlo,monospace;font-size:14px;padding:20px;max-width:340px;margin:12px auto;border:1px dashed #0004}
+.receipt h3{text-align:center;font-family:var(--head)}.receipt hr{border:0;border-top:1px dashed #000}.receipt .r{display:flex;justify-content:space-between;gap:8px}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:var(--brown);color:#fff;padding:10px 18px;border-radius:99px;z-index:90;animation:fo .2s}
+/* admin */
+.adm{position:fixed;inset:0;background:var(--bg);z-index:60;overflow:auto;padding:16px}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}.tabs button{padding:8px 16px;border-radius:99px;background:#fff}.tabs .on{background:var(--brown);color:#fff}
+.tb{width:100%;border-collapse:collapse;background:#fff;border-radius:12px;font-size:14px}.tb td,.tb th{padding:6px;border-bottom:1px solid #0001;text-align:left;vertical-align:top}.tb input:not([type=checkbox]),.tb select{width:100%;min-width:70px;padding:6px;border:1px solid #0003;border-radius:8px}
+.scr{overflow-x:auto}
+@media print{body>*:not(#print){display:none!important}#print{display:block!important}.x,.noprint{display:none}}
+#print{display:none}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto}}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+</style></head><body>
+<div id="app"></div><div id="ov"></div><div id="adm"></div><div id="print"></div>
+<script>
+/* ==================== CONFIG: EDIT EVERYTHING HERE ==================== */
+const CONFIG={
+ cafe:{name:"Momo Magic Cafe",logo:["MOMO MAGIC","CAFE"],logoImg:"",
+  headline:"Where Every Bite Has a Little Magic.",
+  sub:"Premium momos, delicious coffee, hot chocolate and refreshing drinks — all served in a cozy café experience.",
+  address:"[Add your address]",phone:"[Add your phone number]",hours:"[Add your opening hours]",
+  instagram:"[Instagram Link]",mapsEmbed:"" /* paste a Google Maps embed URL when hosted on your own site */},
+ theme:{bg:"#f6ecdd",ink:"#2b1a12",brown:"#4a2c1a",accent:"#c98a2e",muted:"#7a675a",head:"Georgia,'Times New Roman',serif",body:"system-ui,-apple-system,'Segoe UI',Roboto,sans-serif"},
+ currency:"₹", pricesArePlaceholders:true, tables:8,
+ billing:{tax:{on:true,rate:5},service:{on:false,rate:5},discount:{on:false,rate:10}},
+ images:{hero:"",gallery:["","","","","",""],social:["","","",""]}, // paste image URLs/paths here
+ featured:["hot-chocolate","afghani-malai","paneer-double-cheese","pizza-momo","cappuccino"],
+ cats:[{id:"momos",name:"Momos",icon:"🥟"},{id:"coffee",name:"Coffee",icon:"☕"},{id:"hot",name:"Hot Chocolate",icon:"🍫",signature:true},{id:"tea",name:"Tea",icon:"🍵"},{id:"juice",name:"Juices & Refreshments",icon:"🧃"}],
+ /* Add-on GROUPS are shared. An item points to a group via "ag". */
+ addons:{
+  momo:[{id:"cheese",name:"Extra Cheese",price:20},{id:"paneer",name:"Extra Paneer",price:25},{id:"sauce",name:"Extra Sauce",price:10},{id:"mayo",name:"Extra Mayo",price:10},{id:"spicy",name:"Extra Spicy",price:0}],
+  coffee:[{id:"sugar",name:"Extra Sugar",price:0},{id:"shot",name:"Extra Shot",price:30},{id:"cream",name:"Extra Cream",price:20}],
+  hot:[{id:"cream",name:"Whipped Cream",price:20},{id:"marsh",name:"Marshmallows",price:20},{id:"choc",name:"Extra Chocolate",price:30}],
+  tea:[{id:"sugar",name:"Extra Sugar",price:0},{id:"honey",name:"Honey",price:15}],
+  juice:[{id:"ice",name:"Extra Ice",price:0},{id:"nosugar",name:"No Sugar",price:0}]},
+ /* One object = one product. sizes optional. img "" = placeholder. */
+ menu:[
+  {id:"afghani-malai",name:"Afghani Malai Momo",cat:"momos",ag:"momo",price:120,veg:null,popular:true,avail:true,soon:false,img:"",em:"🥟",desc:"Creamy, mildly spiced malai-marinated momos."},
+  {id:"sweet-momo",name:"Sweet Momos",cat:"momos",ag:"momo",price:110,veg:true,avail:true,img:"",em:"🥟",desc:"A sweet filling for a dessert-style bite."},
+  {id:"pizza-momo",name:"Pizza Momos",cat:"momos",ag:"momo",price:130,veg:null,avail:true,img:"",em:"🍕",desc:"Momos with a pizza-style filling and cheese."},
+  {id:"cheese-momo",name:"Cheese Momos",cat:"momos",ag:"momo",price:120,veg:true,avail:true,img:"",em:"🧀",desc:"Soft momos filled with melty cheese."},
+  {id:"paneer-momo",name:"Paneer Momos",cat:"momos",ag:"momo",price:110,veg:true,avail:true,img:"",em:"🥟",desc:"Classic paneer-filled steamed momos."},
+  {id:"paneer-stuffed",name:"Paneer Stuffed Momos",cat:"momos",ag:"momo",price:130,veg:true,avail:true,img:"",em:"🥟",desc:"Generously stuffed with seasoned paneer."},
+  {id:"paneer-double-cheese",name:"Paneer Double Cheese Momos",cat:"momos",ag:"momo",price:150,veg:true,popular:true,avail:true,img:"",em:"🧀",desc:"Paneer with a double layer of cheese."},
+  {id:"fried-momo",name:"Fried Momos",cat:"momos",ag:"momo",price:120,veg:null,avail:true,img:"",em:"🥟",desc:"Golden, crisp-fried momos."},
+  {id:"fried-paneer",name:"Fried Paneer Momos",cat:"momos",ag:"momo",price:130,veg:true,avail:true,img:"",em:"🥟",desc:"Crisp outside, soft paneer inside."},
+  {id:"fried-cheese-corn",name:"Fried Cheese Corn Momos",cat:"momos",ag:"momo",price:140,veg:true,avail:true,img:"",em:"🌽",desc:"Cheese and sweet corn, fried until golden."},
+  {id:"momo-soon",name:"More Momos Coming Soon...",cat:"momos",ag:"momo",price:0,soon:true,avail:false,img:"",em:"✨",desc:""},
+  {id:"regular-coffee",name:"Regular Coffee",cat:"coffee",ag:"coffee",price:80,veg:true,avail:true,img:"",em:"☕",desc:"Classic hot coffee."},
+  {id:"cappuccino",name:"Cappuccino",cat:"coffee",ag:"coffee",price:120,veg:true,popular:true,avail:true,img:"",em:"☕",desc:"Espresso with velvety steamed milk foam."},
+  {id:"hard-coffee",name:"Hard Coffee",cat:"coffee",ag:"coffee",price:100,veg:true,avail:true,img:"",em:"☕",desc:"A strong, bold cup."},
+  {id:"pineapple-coffee",name:"Pineapple Coffee",cat:"coffee",ag:"coffee",price:130,veg:true,avail:true,img:"",em:"🍍",desc:"Coffee with a pineapple twist."},
+  {id:"apple-coffee",name:"Apple Coffee",cat:"coffee",ag:"coffee",price:130,veg:true,avail:true,img:"",em:"🍎",desc:"Coffee with a crisp apple twist."},
+  {id:"hot-chocolate",name:"The Magic Cup — Hot Chocolate",cat:"hot",ag:"hot",price:150,veg:true,popular:true,avail:true,img:"",em:"🍫",sizes:[{n:"Regular",d:0},{n:"Large",d:40}],desc:"Something warm. Something rich. Something magical."},
+  {id:"flavoured-tea",name:"Flavoured Tea",cat:"tea",ag:"tea",price:70,veg:true,avail:true,img:"",em:"🍵",desc:"Ask for today's flavours."},
+  {id:"other-tea",name:"Other Tea Varieties",cat:"tea",ag:"tea",price:60,veg:true,avail:true,img:"",em:"🍵",desc:"More teas — edit this item to add yours."},
+  {id:"fresh-juice",name:"Fresh Juices",cat:"juice",ag:"juice",price:90,veg:true,avail:true,img:"",em:"🧃",desc:"Freshly pressed fruit juice."},
+  {id:"refresh",name:"Other Refreshing Drinks",cat:"juice",ag:"juice",price:80,veg:true,avail:true,img:"",em:"🥤",desc:"Cool drinks — edit this item to add yours."}],
+ payments:[{id:"upi",name:"UPI",online:true},{id:"qr",name:"QR",online:true},{id:"card",name:"Card",online:true},{id:"nb",name:"Net Banking",online:true},{id:"counter",name:"Cash at Counter"},{id:"cafe",name:"Pay at Café"}]
+};
+/* Swap this object for Razorpay/Cashfree/Stripe later. Must return a Promise of {status}. */
+const PaymentProvider={pay:o=>Promise.resolve({status:CONFIG.payments.find(p=>p.id==o.payMethod).online?"TEST – not charged":"Pay at café"})};
+/* ==================== APP ==================== */
+const C=CONFIG,T=C.theme,$=s=>document.querySelector(s);
+for(const k in T)document.documentElement.style.setProperty("--"+k,T[k]);
+const ld=(k,d)=>{try{return JSON.parse(localStorage.getItem(k))||d}catch(e){return d}},sv=(k,v)=>{try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}};
+let menu=ld("mm_menu",C.menu),addons=ld("mm_addons",C.addons),bill=ld("mm_bill",C.billing),orders=ld("mm_orders",[]),cart=[],ui={co:{type:"dine",table:1,name:"",phone:"",payMethod:"upi"}},admTab="orders";
+const m=n=>C.currency+(Math.round(n*100)/100),it=id=>menu.find(x=>x.id==id),esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const ph=(e,i)=>"data:image/svg+xml,"+encodeURIComponent(`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0' stop-color='${["#e9c9a0","#c98a2e","#8a5a3a","#f1dcc0"][i%4]}'/><stop offset='1' stop-color='${["#7b4a2a","#4a2c1a","#b26a3a","#a86d3d"][i%4]}'/></linearGradient></defs><rect width='400' height='300' fill='url(#g)'/><text x='200' y='175' font-size='96' text-anchor='middle'>${e}</text></svg>`);
+const im=(i,n=0)=>i.img||ph(i.em||"🥟",n);
+const lp=l=>{const i=it(l.id),s=(i.sizes||[])[l.size||0],a=l.ad.reduce((t,k)=>t+((addons[i.ag]||[]).find(x=>x.id==k)?.price||0),0);return{base:(i.price+(s?s.d:0))*l.qty,add:a*l.qty}};
+const calc=()=>{let s=0,a=0;cart.forEach(l=>{const p=lp(l);s+=p.base;a+=p.add});const d=bill.discount.on?(s+a)*bill.discount.rate/100:0,sc=bill.service.on?(s+a-d)*bill.service.rate/100:0,t=bill.tax.on?(s+a-d+sc)*bill.tax.rate/100:0;return{s,a,d,sc,t,g:s+a-d+sc+t}};
+const vg=i=>i.veg?'<span class="v" title="Vegetarian"></span>':"";
+const card=(i,n)=>`<div class="card ${i.avail?"":"off"}" style="animation-delay:${n*40}ms" ${i.soon?"":`data-a="open" data-id="${i.id}"`}><div class="im"><img src="${im(i,n)}" alt="${esc(i.name)}" loading="lazy">${i.popular?'<b class="tag">🔥 Popular</b>':""}</div><div class="cb"><h4>${vg(i)}${esc(i.name)}</h4><p>${esc(i.desc)}</p><div class="row"><span class="pr">${i.soon?"Coming soon":m(i.price)}</span>${i.soon?"":i.avail?'<button class="btn sm">Add to Order</button>':"<em>Unavailable</em>"}</div></div></div>`;
+const cnt=()=>cart.reduce((t,l)=>t+l.qty,0);
+function render(){const c=C.cafe,fe=C.featured.map(it).filter(Boolean),hc=menu.find(x=>x.cat=="hot"),G=C.images.gallery,S=C.images.social;
+$("#app").innerHTML=`${C.pricesArePlaceholders?'<div class="ph">Sample prices — set real prices in CONFIG (or the Admin panel).</div>':""}
+<nav><div class="w"><a class="logo" href="#home">${c.logoImg?`<img src="${c.logoImg}" height="40" alt="${esc(c.name)}">`:`<svg width="38" height="38" viewBox="0 0 40 40"><path d="M4 26c0-9 7-17 16-17s16 8 16 17c0 4-3 6-6 6H10c-3 0-6-2-6-6z" fill="#c98a2e"/><path d="M11 12l4 8M20 9v11M29 12l-4 8" stroke="#4a2c1a" stroke-width="2" stroke-linecap="round"/><path d="M28 3l1.5 3.5L33 8l-3.5 1.5L28 13l-1.5-3.5L23 8l3.5-1.5z" fill="#4a2c1a"/></svg><span><b>${c.logo[0]}</b><small>${c.logo[1]}</small></span>`}</a>
+<div class="links" id="links">${[["Home","home"],["Menu","menu"],["Momos","cat-momos"],["Coffee","cat-coffee"],["Drinks","cat-tea"],["About","about"],["Gallery","gallery"],["Contact","contact"]].map(x=>`<a href="#${x[1]}">${x[0]}</a>`).join("")}</div>
+<button class="cartb" data-a="cart" aria-label="Cart">🛒${cnt()?`<i>${cnt()}</i>`:""}</button><a class="btn ord" href="#menu" style="text-decoration:none">Order Now</a><button class="burger" data-a="burger" aria-label="Menu">☰</button></div></nav>
+<header class="hero" id="home"><div class="w"><div><span class="badge">🔥 Customer Favourite — Hot Chocolate</span><h1><em>${esc(c.name.toUpperCase())}</em>${esc(c.headline)}</h1><p>${esc(c.sub)}</p><div class="cta"><a class="btn" href="#menu" style="text-decoration:none">Explore Menu</a><a class="btn o" href="#favourites" style="text-decoration:none">Order Now</a></div></div><div class="himg"><img src="${C.images.hero||ph("🥟☕",0)}" alt="Momos and hot chocolate"></div></div></header>
+<section id="favourites"><div class="w"><h2>Customer Favourites</h2><p class="sub">Tap any item to customise it and add it to your order.</p><div class="grid">${fe.map(card).join("")}</div></div></section>
+<section id="menu" style="background:#fff5e6"><div class="w"><h2>Our Menu</h2><p class="sub">Pick a dish, choose your add-ons, and order in a few taps.</p>
+${C.cats.map(k=>{const its=menu.filter(x=>x.cat==k.id);if(k.signature&&hc)return`<div class="magic" id="cat-${k.id}"><div class="t"><span class="k">OUR SIGNATURE</span><h3>THE MAGIC CUP</h3><p>${esc(hc.desc)}</p><p class="pr" style="color:#fff;font-size:22px">${m(hc.price)}</p><button class="btn g" data-a="open" data-id="${hc.id}">Customise & Add</button></div><img src="${im(hc,1)}" alt="Hot chocolate"></div>`;return`<div class="cat" id="cat-${k.id}"><h3>${k.icon} ${esc(k.name)}</h3><div class="grid">${its.map((x,n)=>x.soon?`<div class="soon">✨ ${esc(x.name)}</div>`:card(x,n)).join("")}</div></div>`}).join("")}</div></section>
+<section id="about"><div class="w"><h2>Why Momo Magic?</h2><p class="sub"></p><div class="why">${[["🥟","Fresh & Delicious","Momos made for every craving."],["☕","Café Crafted Drinks","Coffee, tea and hot chocolate."],["❤️","Made With Care","Served with attention."],["✨","Premium Ambience","A cozy place to hang out."]].map(x=>`<div><span>${x[0]}</span><b>${x[1]}</b>${x[2]}</div>`).join("")}</div></div></section>
+<section id="gallery" style="background:#fff5e6"><div class="w"><h2>Step Into The Magic</h2><p class="sub">Placeholder images — replace in CONFIG.images.gallery.</p><div class="gals">${["🛋️","🥟","☕","🕯️","🍫","🧀"].map((e,n)=>`<div class="gal"><img src="${G[n]||ph(e,n)}" alt="Gallery ${n+1}" loading="lazy"></div>`).join("")}</div></div></section>
+<section><div class="w"><h2>Follow the Magic</h2><p class="sub">${esc(c.instagram)}</p><div class="ig">${["🥟","☕","🍫","🧀"].map((e,n)=>`<div><img src="${S[n]||ph(e,n+2)}" alt="Social ${n+1}" loading="lazy"></div>`).join("")}</div></div></section>
+<section id="contact"><div class="w"><h2>Find ${esc(c.name)}</h2><div class="loc" style="margin-top:16px"><div><p>📍 ${esc(c.address)}</p><p>📞 ${esc(c.phone)}</p><p>🕐 ${esc(c.hours)}</p></div><div class="map">${c.mapsEmbed?`<iframe src="${esc(c.mapsEmbed)}" style="border:0;width:100%;height:100%;min-height:200px" loading="lazy"></iframe>`:"Google Maps placeholder<br>(set CONFIG.cafe.mapsEmbed)"}</div></div></div></section>
+<footer><div class="w"><div class="row"><span>© ${esc(c.name)}</span><a href="#" data-a="admin">Staff login</a></div></div></footer>`}
+const closeO=()=>{$("#ov").innerHTML="";ui.p=null};
+const shell=(h,w="")=>{$("#ov").innerHTML=`<div class="ov" data-a="bg"><div class="md ${w}">${h}</div></div>`};
+function prodModal(){const p=ui.p,i=it(p.id),g=addons[i.ag]||[],s=(i.sizes||[])[p.size];const line=lp(p),each=(line.base+line.add)/p.qty||0;
+shell(`<button class="x" data-a="close">×</button><div class="im" style="border-radius:16px;margin-bottom:12px"><img src="${im(i)}" alt=""></div><h3>${vg(i)} ${esc(i.name)}</h3><p style="color:var(--muted)">${esc(i.desc)}</p>
+${i.sizes?`<b>Size</b><div class="seg">${i.sizes.map((z,n)=>`<label class="${p.size==n?"on":""}"><input type="radio" name="sz" data-a="size" data-n="${n}">${z.n}${z.d?` +${m(z.d)}`:""}</label>`).join("")}</div>`:""}
+<b>Quantity</b><div class="qty" style="margin:8px 0"><button data-a="pq" data-d="-1">−</button><b>${p.qty}</b><button data-a="pq" data-d="1">+</button></div>
+${g.length?`<b>Add-ons</b>${g.map(a=>`<label class="opt"><span><input type="checkbox" data-a="pad" data-k="${a.id}" ${p.ad.includes(a.id)?"checked":""}> ${esc(a.name)}</span><span>${a.price?"+"+m(a.price):"Free"}</span></label>`).join("")}`:""}
+<button class="btn g" style="width:100%;margin-top:14px;padding:14px" data-a="add">Add to Cart — ${m(line.base+line.add)}</button>`)}
+function cartModal(){const t=calc();shell(`<button class="x" data-a="close">×</button><h3>Your Order</h3>${cart.length?cart.map((l,n)=>{const i=it(l.id),p=lp(l);return`<div class="ln"><div><b>${esc(i.name)}</b>${i.sizes?`<small>${i.sizes[l.size].n}</small>`:""}${l.ad.map(k=>`<small>+ ${esc(addons[i.ag].find(a=>a.id==k)?.name)} × ${l.qty}</small>`).join("")}<div class="qty" style="margin-top:6px"><button data-a="cq" data-n="${n}" data-d="-1">−</button>${l.qty}<button data-a="cq" data-n="${n}" data-d="1">+</button><button class="btn o sm" data-a="rm" data-n="${n}">Remove</button></div></div><b>${m(p.base+p.add)}</b></div>`}).join("")+sum(t)+`<div class="cta"><button class="btn o" data-a="close">Add more items</button><button class="btn" data-a="checkout">Checkout</button></div>`:`<p>Your cart is empty. Pick something tasty from the menu.</p><button class="btn" data-a="close">Browse menu</button>`}`)}
+const sum=t=>`<div style="margin-top:12px"><div class="tot"><span>Subtotal</span><span>${m(t.s)}</span></div><div class="tot"><span>Add-ons</span><span>${m(t.a)}</span></div>${t.d?`<div class="tot"><span>Discount (${bill.discount.rate}%)</span><span>−${m(t.d)}</span></div>`:""}${t.sc?`<div class="tot"><span>Service charge (${bill.service.rate}%)</span><span>${m(t.sc)}</span></div>`:""}${t.t?`<div class="tot"><span>Tax (${bill.tax.rate}%)</span><span>${m(t.t)}</span></div>`:""}<div class="tot b"><span>Grand Total</span><span>${m(t.g)}</span></div></div>`;
+function coModal(err=""){const o=ui.co,t=calc();shell(`<button class="x" data-a="cart">←</button><h3>Checkout</h3><b>Order type</b><div class="seg">${[["dine","Dine In"],["takeaway","Takeaway"],["pickup","Pickup"]].map(x=>`<label class="${o.type==x[0]?"on":""}"><input type="radio" data-a="otype" data-v="${x[0]}">${x[1]}</label>`).join("")}</div>
+${o.type=="dine"?`<b>Table</b><select class="f" data-f="table">${Array.from({length:C.tables},(_,n)=>`<option value="${n+1}" ${o.table==n+1?"selected":""}>Table ${String(n+1).padStart(2,"0")}</option>`).join("")}</select>`:`<input class="f" data-f="name" placeholder="Your name" value="${esc(o.name)}"><input class="f" data-f="phone" placeholder="Phone number" inputmode="tel" value="${esc(o.phone)}">`}
+<b>Payment</b><div class="seg">${C.payments.map(p=>`<label class="${o.payMethod==p.id?"on":""}"><input type="radio" data-a="pay" data-v="${p.id}">${p.name}</label>`).join("")}</div>
+<p style="font-size:13px;color:var(--muted)">Online payment is in test mode: no money is taken. Cash and Pay at Café are settled at the counter.</p>${sum(t)}<p class="err">${err}</p><button class="btn g" style="width:100%;padding:14px" data-a="place">Place Order — ${m(t.g)}</button>`)}
+const receipt=o=>`<div class="receipt"><h3>${esc(C.cafe.name.toUpperCase())}</h3><hr><div class="r"><span>Order #${o.id}</span><span>${o.date}</span></div><div class="r"><span>${o.type=="dine"?"Table "+o.table:o.type+" · "+esc(o.name)}</span><span>${o.time}</span></div><hr>${o.lines.map(l=>`<div class="r"><span>${esc(l.name)} × ${l.qty}</span><span>${m(l.base)}</span></div>${l.ad.map(a=>`<div class="r"><span>&nbsp;+ ${esc(a)} × ${l.qty}</span><span>${m(l.addT[a]||0)}</span></div>`).join("")}`).join("")}<hr><div class="r"><span>Subtotal</span><span>${m(o.t.s)}</span></div><div class="r"><span>Add-ons</span><span>${m(o.t.a)}</span></div><div class="r"><span>Discount</span><span>${m(o.t.d)}</span></div>${o.t.sc?`<div class="r"><span>Service</span><span>${m(o.t.sc)}</span></div>`:""}<div class="r"><span>Tax</span><span>${m(o.t.t)}</span></div><div class="r"><b>TOTAL</b><b>${m(o.t.g)}</b></div><hr><div>Payment: ${o.pay}</div><p style="text-align:center">Thank you for visiting<br>${esc(C.cafe.name)} ❤️</p></div>`;
+function showReceipt(o){shell(`<button class="x" data-a="close">×</button><h3>Order placed ✓</h3>${receipt(o)}<div class="cta noprint"><button class="btn" data-a="print" data-id="${o.id}">Print receipt</button><button class="btn o" data-a="close">Done</button></div>`)}
+function toast(t){const e=document.createElement("div");e.className="toast";e.textContent=t;document.body.appendChild(e);setTimeout(()=>e.remove(),1600)}
+function place(){const o=ui.co;if(o.type!="dine"){if(!o.name.trim())return coModal("Enter your name.");if(!/^\d{10}$/.test(o.phone.replace(/\D/g,"").slice(-10))||o.phone.replace(/\D/g,"").length<10)return coModal("Enter a valid 10-digit phone number.")}
+const t=calc(),d=new Date(),ord={id:"MM"+(1024+orders.length),date:d.toLocaleDateString("en-IN"),time:d.toLocaleTimeString("en-IN",{hour:"2-digit",minute:"2-digit"}),type:o.type,table:o.table,name:o.name,phone:o.phone,payMethod:o.payMethod,t,status:"New",
+ lines:cart.map(l=>{const i=it(l.id),p=lp(l),addT={};l.ad.forEach(k=>{const a=addons[i.ag].find(x=>x.id==k);addT[a.name]=a.price*l.qty});return{name:i.name+(i.sizes?" ("+i.sizes[l.size].n+")":""),qty:l.qty,base:p.base,ad:Object.keys(addT),addT}})};
+PaymentProvider.pay(ord).then(r=>{ord.pay=r.status;orders.unshift(ord);sv("mm_orders",orders);cart=[];render();showReceipt(ord)})}
+const STAT=["New","Accepted","Preparing","Ready","Completed","Cancelled"];
+function admin(){const a=$("#adm");if(!ui.admin){a.innerHTML="";return}
+const tabs=["orders","menu","add-ons","settings"];let b="";
+if(admTab=="orders")b=orders.length?`<div class="scr"><table class="tb"><tr><th>ID<th>Customer<th>Type<th>Items<th>Total<th>Payment<th>Status</tr>${orders.map((o,n)=>`<tr><td>${o.id}<td>${o.type=="dine"?"Table "+o.table:esc(o.name)+"<br>"+esc(o.phone)}<td>${o.type}<td>${o.lines.map(l=>esc(l.name)+" ×"+l.qty).join("<br>")}<td>${m(o.t.g)}<td>${o.pay}<td><select data-f="st" data-n="${n}">${STAT.map(s=>`<option ${o.status==s?"selected":""}>${s}</option>`).join("")}</select></tr>`).join("")}</table></div>`:"<p>No orders yet. Place a test order from the site.</p>";
+if(admTab=="menu")b=`<div class="scr"><table class="tb"><tr><th>Name<th>Category<th>Price<th>Image URL<th>Description<th>Avail<th>Popular<th>Soon<th></tr>${menu.map((i,n)=>`<tr><td><input data-f="mi" data-n="${n}" data-k="name" value="${esc(i.name)}"><td><select data-f="mi" data-n="${n}" data-k="cat">${C.cats.map(k=>`<option value="${k.id}" ${i.cat==k.id?"selected":""}>${k.name}</option>`).join("")}</select><td><input type="number" data-f="mi" data-n="${n}" data-k="price" value="${i.price}"><td><input data-f="mi" data-n="${n}" data-k="img" value="${esc(i.img)}"><td><input data-f="mi" data-n="${n}" data-k="desc" value="${esc(i.desc)}">${["avail","popular","soon"].map(k=>`<td><input type="checkbox" data-f="mc" data-n="${n}" data-k="${k}" ${i[k]?"checked":""}>`).join("")}<td><button class="btn o sm" data-a="mdel" data-n="${n}">Delete</button></tr>`).join("")}</table></div><button class="btn" style="margin-top:12px" data-a="madd">+ Add item</button>`;
+if(admTab=="add-ons")b=Object.keys(addons).map(g=>`<h4 style="margin:16px 0 6px">${g}</h4><table class="tb">${addons[g].map((a,n)=>`<tr><td><input data-f="ai" data-g="${g}" data-n="${n}" data-k="name" value="${esc(a.name)}"><td><input type="number" data-f="ai" data-g="${g}" data-n="${n}" data-k="price" value="${a.price}"><td><button class="btn o sm" data-a="adel" data-g="${g}" data-n="${n}">Delete</button></tr>`).join("")}</table><button class="btn o sm" style="margin-top:6px" data-a="aadd" data-g="${g}">+ Add add-on</button>`).join("");
+if(admTab=="settings")b=["tax","service","discount"].map(k=>`<div class="opt"><span><input type="checkbox" data-f="bo" data-k="${k}" ${bill[k].on?"checked":""}> ${k[0].toUpperCase()+k.slice(1)} ON</span><span><input type="number" style="width:80px;padding:6px" data-f="br" data-k="${k}" value="${bill[k].rate}"> %</span></div>`).join("")+`<p style="color:var(--muted);font-size:14px">Changes save in this browser only. To make them permanent for everyone, copy the values into CONFIG.</p><button class="btn o" data-a="reset">Reset menu, add-ons & billing to CONFIG</button>`;
+a.innerHTML=`<div class="w"><div class="row"><h2>Admin</h2><button class="btn o sm" data-a="admx">Close</button></div><div class="tabs">${tabs.map(t=>`<button class="${admTab==t?"on":""}" data-a="tab" data-v="${t}">${t[0].toUpperCase()+t.slice(1)}</button>`).join("")}</div>${b}</div>`}
+const saveAll=()=>{sv("mm_menu",menu);sv("mm_addons",addons);sv("mm_bill",bill);sv("mm_orders",orders)};
+document.addEventListener("click",e=>{const el=e.target.closest("[data-a]");if(!el)return;const a=el.dataset.a,d=el.dataset,p=ui.p;
+if(a=="bg"){if(e.target==el)closeO();return}
+if(a=="admin"){e.preventDefault();ui.admin=1;admin()}else if(a=="admx"){ui.admin=0;admin();render()}
+else if(a=="burger")$("#links").classList.toggle("open");
+else if(a=="open"){ui.p={id:d.id,qty:1,size:0,ad:[]};prodModal()}
+else if(a=="close")closeO();
+else if(a=="pq"){p.qty=Math.max(1,p.qty+ +d.d);prodModal()}
+else if(a=="size"){p.size=+d.n;prodModal()}
+else if(a=="pad"){const k=d.k;p.ad=p.ad.includes(k)?p.ad.filter(x=>x!=k):[...p.ad,k];prodModal()}
+else if(a=="add"){const ex=cart.find(l=>l.id==p.id&&l.size==p.size&&[...l.ad].sort()+""==[...p.ad].sort()+"");ex?ex.qty+=p.qty:cart.push({id:p.id,qty:p.qty,size:p.size,ad:[...p.ad]});closeO();render();const c=$(".cartb");c.classList.add("pop");toast("Added to cart")}
+else if(a=="cart")cartModal();
+else if(a=="cq"){const l=cart[+d.n];l.qty=Math.max(1,l.qty+ +d.d);cartModal();render()}
+else if(a=="rm"){cart.splice(+d.n,1);cartModal();render()}
+else if(a=="checkout")coModal();
+else if(a=="otype"){ui.co.type=d.v;coModal()}else if(a=="pay"){ui.co.payMethod=d.v;coModal()}
+else if(a=="place")place();
+else if(a=="print"){const o=orders.find(x=>x.id==d.id);$("#print").innerHTML=receipt(o);window.print()}
+else if(a=="tab"){admTab=d.v;admin()}
+else if(a=="madd"){menu.push({id:"item-"+Date.now(),name:"New item",cat:C.cats[0].id,ag:C.cats[0].id=="momos"?"momo":C.cats[0].id,price:0,avail:true,img:"",em:"🥟",desc:""});saveAll();admin()}
+else if(a=="mdel"){menu.splice(+d.n,1);saveAll();admin()}
+else if(a=="aadd"){addons[d.g].push({id:"a"+Date.now(),name:"New add-on",price:0});saveAll();admin()}
+else if(a=="adel"){addons[d.g].splice(+d.n,1);saveAll();admin()}
+else if(a=="reset"){["mm_menu","mm_addons","mm_bill"].forEach(k=>{try{localStorage.removeItem(k)}catch(e){}});menu=C.menu;addons=C.addons;bill=C.billing;admin()}});
+document.addEventListener("change",e=>{const el=e.target,f=el.dataset.f,d=el.dataset;if(!f)return;
+if(f=="table")ui.co.table=+el.value;else if(f=="st"){orders[+d.n].status=el.value}
+else if(f=="mi")menu[+d.n][d.k]=d.k=="price"?+el.value||0:el.value;else if(f=="mc")menu[+d.n][d.k]=el.checked;
+else if(f=="ai")addons[d.g][+d.n][d.k]=d.k=="price"?+el.value||0:el.value;
+else if(f=="bo")bill[d.k].on=el.checked;else if(f=="br")bill[d.k].rate=+el.value||0;
+saveAll();if(ui.admin&&(f=="mi"||f=="mc")){}});
+document.addEventListener("input",e=>{const el=e.target;if(el.dataset.f=="name")ui.co.name=el.value;if(el.dataset.f=="phone")ui.co.phone=el.value});
+document.addEventListener("keydown",e=>{if(e.key=="Escape")closeO()});
+render();
+</script></body></html>
